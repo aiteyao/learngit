@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+
+    <!-- Demo styles -->
+    <style>
+    body {
+        background: #fff;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    img{
+        display: block;
+    }
+    .swiper-container {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+    }
+    .swiper-slide img{
+        width: 100%;
+    }
+    .wrap{
+        width: 600px;
+        overflow: hidden;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container wrap">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="images/2.png" class="img1">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/3.png" class="img1">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/4.png" class="img1">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/5.png" class="img1">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/6.png" class="img1">
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>        
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/layer.js"></script>
+    <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable :true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev', 
+        // autoplay: 1500,     
+        loop: true,
+        speed: 1000,
+        slideToClickedSlide: true,
+        // autoplayDisableOnInteraction: false,
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflow: {
+            rotate: 25,
+            stretch: 3,
+            depth: 200,
+            modifier: 2,
+            slideShadows : false   
+        }
+    }); 
+    $(function () {
+        //第一种方法
+        // $('.wrap .swiper-slide').click(function () {  
+        //     var index = $(this).index();
+        //     //console.log(index);
+        //     layer.open({
+        //       type: 1,
+        //       title: false,
+        //       closeBtn: 1,
+        //       area: ['700px', '296px'],
+        //       shadeClose: true,
+        //       content: '<img src="images/'+ (index % 5 + 2) +'.png" width="100%">'
+        //     });      
+        // });
+        //第二种方法
+        $('.wrap .swiper-slide').click(function () {  
+            var index = $(this).index();
+            var img_src = $(this).find('img').attr('src');
+            //console.log(img_src);
+            layer.open({
+              type: 1,
+              title: false,
+              closeBtn: 1,
+              area: ['700px', '296px'],
+              shadeClose: true,
+              content: '<img src="'+ img_src +'" width="100%">'
+            });      
+        });
+    });   
+    </script>
+</body>
+</html>
